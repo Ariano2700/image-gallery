@@ -84,7 +84,7 @@ function SubmitImageData({
   return (
     <>
       {resultData && (
-        <section className="w-full h-full p-16 flex flex-col items-center gap-10 bg-blue-600 overflow-y-visible">
+        <section className="w-full h-full p-16 flex flex-col items-center gap-10 bg-primary-15 border border-primary-25 rounded-md overflow-y-visible">
           <div className="flex items-center justify-center w-11/12">
             <img
               src={resultData.info.url}
@@ -114,7 +114,7 @@ function SubmitImageData({
               <div>
                 <label
                   htmlFor="title"
-                  className="block text-sm font-medium text-white"
+                  className="block text-base font-medium text-primary-30"
                 >
                   Título (Opcional)
                 </label>
@@ -124,14 +124,14 @@ function SubmitImageData({
                   id="title"
                   value={formData.title}
                   onChange={handleChange}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full px-3 py-2 border border-primary-20 rounded-md shadow-sm focus:outline-none focus:ring-primary-30 focus:border-primary-30 sm:text-base"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="description"
-                  className="block text-sm font-medium text-white"
+                  className="block text-base font-medium text-primary-30"
                 >
                   Descripción (Opcional)
                 </label>
@@ -141,14 +141,14 @@ function SubmitImageData({
                   id="description"
                   value={formData.description}
                   onChange={handleChange}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full px-3 py-2 border border-primary-20 rounded-md shadow-sm focus:outline-none focus:ring-primary-30 focus:border-primary-30 sm:text-base"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="date"
-                  className="block text-sm font-medium text-white"
+                  className="block text-base font-medium text-primary-30"
                 >
                   Fecha (Opcional)
                 </label>
@@ -158,13 +158,13 @@ function SubmitImageData({
                   id="date"
                   value={formData.date}
                   onChange={handleChange}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 block w-full px-3 py-2 border border-primary-20 rounded-md shadow-sm focus:outline-none focus:ring-primary-30 focus:border-primary-30 sm:text-base"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-20 hover:bg-primary-25 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-25 border-primary-25 transition-all ease-out duration-300"
               >
                 Enviar
               </button>

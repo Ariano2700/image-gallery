@@ -21,7 +21,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
       );
     }
 
-    //let imagesData = [];
     console.log("Fetching images with id:", id, "and limit:", limit);
     const imagesData = await getAllIamges(id, limit);
 

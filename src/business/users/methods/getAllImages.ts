@@ -37,6 +37,9 @@ export async function getAllIamges(
     const image: ImagesI[] = querySnapshot.docs.map((img) => ({
       id: img.id,
       url: img.data().url,
+      date: img.data().date,
+      description: img.data().description,
+      title: img.data().title,
     }));
     return image;
   } catch (error) {
