@@ -3,10 +3,17 @@ import { useRef } from "react";
 import ImageSkeletor from "../components/ImageSkeletor";
 import { FetchingLoader } from "@/features/ui";
 import { motion } from "framer-motion";
-import { dancing_script, indie_flower, pacifico } from "@/fonts/fonts";
+import {
+  dancing_script,
+  indie_flower,
+  montserrat,
+  pacifico,
+  rampart_one,
+} from "@/fonts/fonts";
 import galleryCss from "@/features/users//css/gallery.module.css";
 import { ModalImage, useInfiniteScrollObserver } from "@/features/shared";
 import useImageStore from "@/store/imageStore/imageData.store";
+import OurSpotifyData from "../components/OurSpotifyData";
 
 function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -28,15 +35,39 @@ function Home() {
       whileInView={{ opacity: 1, x: 0 }} // Animación cuando entra en vista
       viewport={{ once: false, amount: 0.0 }} // Configura cómo se activa la animación
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="py-5 px-16 max-md:px-12 max-sm:px-8 w-full max-sm:py-16 text-primary-30"
+      className="py-5 px-16 max-md:px-12 max-sm:px-8 w-full max-sm:py-16 text-primary-30 dark:text-primary-20"
     >
       <motion.h1
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className={`${pacifico.className} text-4xl text-center font-bold`}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: false, amount: 0.5 }}
+        transition={{ duration: 0.5, delay: 0.4, ease: "easeInOut" }}
+        className={`${pacifico.className} text-5xl font-bold mb-10 text-center md:text-start max-sm:-mt-12`}
       >
-        Bienvenidos a nuestra galeria
+        Bienvenidos a nuestra pagina
       </motion.h1>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.4, ease: "easeInOut" }}
+        className="w-full"
+      >
+        <h2
+          className={`${montserrat.className} text-3xl font-semibold mb-5 text-green-600 px-5 text-center dark:text-green-400`}
+        >
+          Nuestro Spotify
+        </h2>{" "}
+        <OurSpotifyData />
+      </motion.div>
+      <motion.h2
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: false, amount: 0.5 }}
+        transition={{ duration: 0.5, delay: 0.4, ease: "easeInOut" }}
+        className={`${montserrat.className} text-3xl font-semibold mt-10 text-primary-30 px-5 text-center dark:text-primary-20`}
+      >
+        Nuestra galeria
+      </motion.h2>{" "}
       <div className={`${galleryCss.container}`}>
         {isLoading && imagesData.length === 0
           ? [1, 2, 3].map((_, index) => <ImageSkeletor key={index} />)

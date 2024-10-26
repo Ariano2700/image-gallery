@@ -1,4 +1,4 @@
-import { deleteImage } from "@/business/ownerUser/methods/deleteImage";
+import { deleteImage } from "@/business/ownerUser/methods/firebase/deleteImage";
 import { NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 import { cookies } from "next/headers";

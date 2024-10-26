@@ -84,7 +84,7 @@ function SubmitImageData({
   return (
     <>
       {resultData && (
-        <section className="w-full h-full p-16 flex flex-col items-center gap-10 bg-primary-15 border border-primary-25 rounded-md overflow-y-visible">
+        <section className="w-full h-full p-16 flex flex-col items-center gap-10 dark:bg-primary-20 bg-primary-15 border border-primary-25 rounded-md overflow-y-visible">
           <div className="flex items-center justify-center w-11/12">
             <img
               src={resultData.info.url}
@@ -114,7 +114,7 @@ function SubmitImageData({
               <div>
                 <label
                   htmlFor="title"
-                  className="block text-base font-medium text-primary-30"
+                  className="block text-base font-medium text-primary-30 dark:text-primary-5"
                 >
                   Título (Opcional)
                 </label>
@@ -131,7 +131,7 @@ function SubmitImageData({
               <div>
                 <label
                   htmlFor="description"
-                  className="block text-base font-medium text-primary-30"
+                  className="block text-base font-medium text-primary-30 dark:text-primary-5"
                 >
                   Descripción (Opcional)
                 </label>
@@ -148,7 +148,7 @@ function SubmitImageData({
               <div>
                 <label
                   htmlFor="date"
-                  className="block text-base font-medium text-primary-30"
+                  className="block text-base font-medium text-primary-30 dark:text-primary-5"
                 >
                   Fecha (Opcional)
                 </label>
@@ -164,7 +164,7 @@ function SubmitImageData({
 
               <button
                 type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-20 hover:bg-primary-25 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-25 border-primary-25 transition-all ease-out duration-300"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-25 hover:bg-primary-30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-25 border-primary-25 transition-all ease-out duration-300"
               >
                 Enviar
               </button>

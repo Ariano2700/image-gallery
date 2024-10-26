@@ -11,9 +11,9 @@ function PersonalData({ member }: { member: OurDataI }) {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: false, amount: 0.5 }}
       transition={{ duration: 0.5, delay: 0.4, ease: "easeInOut" }}
-      className="flex items-center justify-center flex-col bg-primary-20 p-2 text-primary-5 rounded-md"
+      className="flex items-center justify-center flex-col bg-primary-30 p-2 text-primary-5 rounded-md dark:bg-primary-25 dark:text-primary-10"
     >
-      <h3 className="font-medium text-center text-lg">{member.name}</h3>
+      <h3 className="font-medium text-center text-lg text-nowrap">{member.name}</h3>
       <nav className="flex gap-5 text-2xl">
         {member.networks.instagram && (
           <Link

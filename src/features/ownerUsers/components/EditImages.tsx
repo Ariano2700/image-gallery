@@ -79,9 +79,13 @@ function EditImages() {
 
   return (
     <div className="py-5 px-16 max-md:px-12 max-sm:px-8 w-full max-sm:py-16">
-      <div className={`grid place-items-center grid-cols-4`}>
+      <div className={`grid place-items-center grid-cols-2 md:grid-cols-4`}>
         {isLoading && imagesData.length === 0
-          ? [1, 2, 3].map((_, index) => <ImageSkeletor key={index} />)
+          ? [1, 2, 3, 4].map((_, index) => (
+              <div key={index} className="flex  gap-6 w-full">
+                <ImageSkeletor key={index} />
+              </div>
+            ))
           : imagesData.map((image, index) => (
               <div key={index} className={`flex flex-col flex-wrap px-4`}>
                 <img
@@ -100,11 +104,11 @@ function EditImages() {
           <FetchingLoader />
         </div>
       )}
-      <ModalImage>
+      <ModalImage isEdited={true}>
         {selectedImage && (
           <>
             <div className="mb-3 flex flex-col items-center">
-              <div className="flex justify-between">
+              <div className="flex flex-col  justify-between">
                 <input
                   type="text"
                   value={selectedImage.title || ""}

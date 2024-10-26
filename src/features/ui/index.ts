@@ -6,6 +6,7 @@ export { default as SolarLockOutline } from "./icons/solar/SolarLockOutline";
 export { default as MdiFacebook } from "./icons/material-design-icons/MdiFacebook";
 export { default as MdiInstagram } from "./icons/material-design-icons/MdiInstagram";
 export { default as MdiImage } from "./icons/material-design-icons/MdiImage";
+export { default as MdiLogout } from "./icons/material-design-icons/MdiLogout";
 
 //Material Symbols
 export { default as MaterialSymbolsCloseRounded } from "./icons/material-symbols/MaterialSymbolsCloseRounded";
@@ -17,5 +18,5 @@ export { default as MageX } from "./icons/MageIcons/MageX";
 export { default as RiLoader2Fill } from "./icons/remix-icon/RiLoader2Fill";
 
 //Components\\
-export { default as Loader } from "./loader/Loader";
+export { default as Loader } from "./loader/LoaderHeart";
 export { default as FetchingLoader } from "./loader/FetchingLoader";

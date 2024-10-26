@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${montserrat.className} bg-primary-90 min-h-screen antialiased py-3`}
+        className={`${montserrat.className} dark:bg-primary-95 bg-primary-90 min-h-screen antialiased py-3`}
       >
         <ProviderFirebase>
           <Header />

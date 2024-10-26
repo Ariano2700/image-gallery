@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: "selector",
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -24,8 +24,8 @@ const config: Config = {
           25: "#f472b6", //pink400
           30: "#ec4899", //pink 500
           //BG COLORS
-          90: "#f8e7fa", //bg clear
-          95: "#312033", //bg dark
+          90: "#e5c1e9", //bg clear
+          95: "#814f87", //bg dark
           DEFAULT: "#E78895",
         },
         success: {

@@ -36,7 +36,7 @@ const LoginPage = () => {
     }
   };
   return (
-    <section className="min-h-screen flex justify-center items-center">
+    <section className="mt-7 flex justify-center items-center">
       <div className="flex justify-center items-center flex-col">
         {loading === true ? (
           <Loader />

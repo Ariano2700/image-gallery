@@ -1,4 +1,4 @@
-import { uploadImage } from "@/business/ownerUser/methods/uploadImage";
+import { uploadImage } from "@/business/ownerUser/methods/firebase/uploadImage";
 import { ImagesI } from "@/business/users/interfaces/linkImagesInterface";
 import { SignJWT } from "jose";
 import { cookies } from "next/headers";

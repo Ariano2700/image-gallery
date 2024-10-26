@@ -1,4 +1,4 @@
-import { updateImageData } from "@/business/ownerUser/methods/updateImageData"; // Método para actualizar
+import { updateImageData } from "@/business/ownerUser/methods/firebase/updateImageData"; // Método para actualizar
 import { jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";

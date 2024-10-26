@@ -20,8 +20,8 @@ function Panel() {
   return (
     <section className="flex items-center w-full overflow-y-auto flex-col gap-10">
       <div className="flex flex-col gap-4 items-center justify-center">
-        <h1 className="text-2xl text-primary-25 font-medium">Hola mochis,</h1>
-        <h2 className="text-2xl text-primary-25 font-medium">
+        <h1 className="text-2xl text-primary-25 dark:text-primary-20 font-medium">Hola mochis,</h1>
+        <h2 className="text-2xl text-primary-25 dark:text-primary-20 font-medium">
           ¿Que vas a hacer?
         </h2>
       </div>
@@ -49,7 +49,7 @@ function Panel() {
       </div>
 
       {selectedOption === null && (
-        <h2 className="text-xl text-primary-25 font-medium">
+        <h2 className="text-xl text-primary-25 dark:text-primary-20 font-medium">
           ¡Aqui se mostrala lo seleccionado!
         </h2>
       )}
