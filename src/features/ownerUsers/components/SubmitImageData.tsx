@@ -94,10 +94,10 @@ function SubmitImageData({
           </div>
           {message.status !== 0 && (
             <p
-              className={`mt-4 mb-4 text-xl font-semibold
+              className={`mt-1 text-sm sm:text-xl font-semibold
                 ${
                   message.status === 200
-                    ? "text-success"
+                    ? "text-success-85"
                     : message.status === 500
                     ? "text-danger"
                     : message.status === 400

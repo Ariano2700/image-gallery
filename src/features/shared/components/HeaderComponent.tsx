@@ -33,7 +33,7 @@ function HeaderComponent() {
             <PersonalData member={member} key={i} />
           ))}
         </div>
-        <div className="">
+        <div>
           <LogOutButton />
         </div>
       </div>

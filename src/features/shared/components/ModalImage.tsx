@@ -30,6 +30,7 @@ function ModalImage({ children, isEdited }: ModalImageT) {
             duration: 0.1,
           }}
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 py-3"
+          onClick={isEdited ? undefined : closeModal}
         >
           <button
             className="fixed top-0 right-5 p-2 mt-4 mr-3 rounded-full bg-primary-25 text-primary-15 hover:bg-danger hover:text-white transition-all ease-in-out duration-300"

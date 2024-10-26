@@ -26,7 +26,7 @@ export async function POST(req: Request) {
     const response = await uploadImage(token, image);
     if (!response) {
       return NextResponse.json(
-        { msg: "Ocurrió un error al intentar crear tu usuario", status: 500 },
+        { msg: "Ocurrió al intentar subir la imagen", status: 500 },
         { status: 500 }
       );
     }
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json(
-      { msg: "Se guardo la imagen y sus datos correctamente", status: 200 },
+      { msg: "Datos e imagen guardados correctamente", status: 200 },
       { status: 200 }
     );
   } catch (error) {
