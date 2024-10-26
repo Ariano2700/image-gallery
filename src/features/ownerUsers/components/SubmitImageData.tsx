@@ -84,7 +84,7 @@ function SubmitImageData({
   return (
     <>
       {resultData && (
-        <section className="w-full h-full p-16 flex flex-col items-center gap-10 dark:bg-primary-20 bg-primary-15 border border-primary-25 rounded-md overflow-y-visible">
+        <section className="w-2/3 h-full p-16 flex flex-col items-center gap-10 dark:bg-primary-20 bg-primary-15 border border-primary-25 rounded-md overflow-y-visible">
           <div className="flex items-center justify-center w-11/12">
             <img
               src={resultData.info.url}
