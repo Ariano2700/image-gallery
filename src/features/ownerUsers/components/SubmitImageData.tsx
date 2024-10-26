@@ -130,23 +130,6 @@ function SubmitImageData({
 
               <div>
                 <label
-                  htmlFor="description"
-                  className="block text-base font-medium text-primary-30 dark:text-primary-5"
-                >
-                  Descripción (Opcional)
-                </label>
-                <input
-                  type="text"
-                  name="description"
-                  id="description"
-                  value={formData.description}
-                  onChange={handleChange}
-                  className="mt-1 block w-full px-3 py-2 border border-primary-20 rounded-md shadow-sm focus:outline-none focus:ring-primary-30 focus:border-primary-30 sm:text-base"
-                />
-              </div>
-
-              <div>
-                <label
                   htmlFor="date"
                   className="block text-base font-medium text-primary-30 dark:text-primary-5"
                 >
@@ -157,6 +140,23 @@ function SubmitImageData({
                   name="date"
                   id="date"
                   value={formData.date}
+                  onChange={handleChange}
+                  className="mt-1 block w-full px-3 py-2 border border-primary-20 rounded-md shadow-sm focus:outline-none focus:ring-primary-30 focus:border-primary-30 sm:text-base"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="description"
+                  className="block text-base font-medium text-primary-30 dark:text-primary-5"
+                >
+                  Descripción (Opcional)
+                </label>
+                <input
+                  type="text"
+                  name="description"
+                  id="description"
+                  value={formData.description}
                   onChange={handleChange}
                   className="mt-1 block w-full px-3 py-2 border border-primary-20 rounded-md shadow-sm focus:outline-none focus:ring-primary-30 focus:border-primary-30 sm:text-base"
                 />
