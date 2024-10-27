@@ -26,6 +26,6 @@ export async function middleware(req: Request) {
 
 // Configuración del middleware
 export const config = {
-  matcher: ["/panel"],
-  //matcher: ["/panel/:path*"],
+  //matcher: ["/panel"],
+  matcher: ["/panel/:path*"],
 };

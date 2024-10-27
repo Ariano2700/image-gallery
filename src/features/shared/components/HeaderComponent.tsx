@@ -1,11 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import PersonalData from "./PersonalData";
 import { members } from "../utils/OurNetworks";
 import { rampart_one } from "@/fonts/fonts";
 import ThemeToggleButton from "./ThemeToggleButton";
 import LogOutButton from "@/features/ownerUsers/components/LogOutButton";
-import { OcticonThreeBars16 } from "@/features/ui";
+import NavButton from "./NavButton";
 
 function HeaderComponent() {
   return (
@@ -36,9 +35,7 @@ function HeaderComponent() {
           <LogOutButton />
         </div>
       </div>
-      <div className="sm:hidden p-3 rounded-full dark:bg-primary-15 border dark:border-primary-25 dark:text-primary-25 bg-primary-30 border-primary-20 text-primary-5">
-        <OcticonThreeBars16 className="size-5 font-bold" />
-      </div>
+      <NavButton />
     </header>
   );
 }

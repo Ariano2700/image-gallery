@@ -18,7 +18,7 @@ const LogOutButton = () => {
           onClick={handleLogout}
           className=" w-full rounded-lg p-3 bg-danger-85 text-primary-5 text-center font-bold hover:bg-danger transition-all duration-300 ease-in flex items-center justify-center gap-4"
         >
-          Cerrar sesión <MdiLogout />
+          Salir <MdiLogout />
         </button>
       )}
     </>
