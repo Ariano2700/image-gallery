@@ -17,6 +17,9 @@ export { default as MageX } from "./icons/MageIcons/MageX";
 //Remix Icon
 export { default as RiLoader2Fill } from "./icons/remix-icon/RiLoader2Fill";
 
+//Octicons
+export { default as OcticonThreeBars16 } from "./icons/Octicons/OcticonThreeBars16";
+
 //Components\\
 export { default as Loader } from "./loader/LoaderHeart";
 export { default as FetchingLoader } from "./loader/FetchingLoader";
