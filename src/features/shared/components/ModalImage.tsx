@@ -30,7 +30,6 @@ function ModalImage({ children, isEdited }: ModalImageT) {
             duration: 0.1,
           }}
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 py-3"
-          onClick={isEdited ? undefined : closeModal}
         >
           <button
             className="fixed top-0 right-5 p-2 mt-4 mr-3 rounded-full bg-primary-25 text-primary-15 hover:bg-danger hover:text-white transition-all ease-in-out duration-300"
@@ -44,12 +43,12 @@ function ModalImage({ children, isEdited }: ModalImageT) {
               alt="Selected image"
               className={`${
                 isEdited === true ? "w-2/3" : "w-11/12"
-              } sm:w-full sm:h-full object-contain rounded-tr-md rounded-tl-md`}
+              } sm:w-full sm:h-full object-contain rounded-tr-md rounded-tl-md max-h-[500px]`}
             />
             <div
               className={`bg-slate-100 ${
                 isEdited === true ? "w-2/3" : "w-11/12"
-              } sm:w-full sm:h-full text-black p-6 rounded-br-sm rounded-bl-sm`}
+              } sm:w-full sm:h-full text-black px-5 py-2 rounded-br-sm rounded-bl-sm`}
             >
               {children}
             </div>

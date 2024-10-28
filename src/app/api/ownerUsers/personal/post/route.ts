@@ -1,4 +1,4 @@
-import { uploadImage } from "@/business/ownerUser/methods/firebase/uploadImage";
+import { uploadPersonalImage } from "@/business/ownerUser/methods/firebase/personalImages/uploadPersonalImage";
 import { ImagesI } from "@/business/users/interfaces/linkImagesInterface";
 import { SignJWT } from "jose";
 import { cookies } from "next/headers";
@@ -12,8 +12,12 @@ export async function POST(req: Request) {
   const cookie = cookies();
 
   const token = cookie.get("auth-token")?.value;
+  const uid = cookie.get("uid")?.value;
   if (!token) {
     return NextResponse.json({ msg: "Token no encontrado" }, { status: 401 });
+  }
+  if (!uid) {
+    return NextResponse.json({ msg: "UID no encontrado" }, { status: 401 });
   }
   try {
     const image: Omit<ImagesI, "id"> = {
@@ -23,7 +27,7 @@ export async function POST(req: Request) {
       date,
     };
 
-    const response = await uploadImage(token, image);
+    const response = await uploadPersonalImage(token, image, uid);
     if (!response) {
       return NextResponse.json(
         { msg: "Ocurrió al intentar subir la imagen", status: 500 },
@@ -46,7 +50,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json(
-      { msg: "Datos e imagen guardados correctamente", status: 200 },
+      { msg: "Datos e imagen personal guardados correctamente", status: 200 },
       { status: 200 }
     );
   } catch (error) {

@@ -1,10 +1,12 @@
+import { spotifyEndpoints } from "@/endpointsRouter";
 import { GetAccessToken } from "../../interfaces/spotifyTypes";
 
 export default async function getAccessToken({
   client_id,
   client_secret,
 }: GetAccessToken) {
-  const response = await fetch("https://accounts.spotify.com/api/token", {
+  const route = spotifyEndpoints.getSpotifyAccessTokenEndpoint();
+  const response = await fetch(route, {
     method: "POST",
     headers: {
       Authorization: "Basic " + btoa(`${client_id}:${client_secret}`),

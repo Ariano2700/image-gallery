@@ -1,5 +1,7 @@
 "use client";
 import { ExtendedCloudinaryUploadWidgetResults } from "@/business/ownerUser/interfaces/cldUploadResults";
+import { ownerEndpoints } from "@/endpointsRouter";
+import { fetchDataOfI } from "@/features/shared/hooks/useInfiniteScrollObserver";
 import { useEffect, useState } from "react";
 
 type ResponseType = {
@@ -10,9 +12,11 @@ type ResponseType = {
 function SubmitImageData({
   resultData,
   resetResultData,
+  fetchDataOf,
 }: {
   resultData: ExtendedCloudinaryUploadWidgetResults | null;
   resetResultData: () => void;
+  fetchDataOf: fetchDataOfI;
 }) {
   const [formData, setFormData] = useState({
     url: resultData?.info.url,
@@ -48,7 +52,14 @@ function SubmitImageData({
       return;
     }
     try {
-      const response = await fetch("/api/ownerUsers/post", {
+      let route;
+      if (fetchDataOf.fetchDataOf === "PERSONAL") {
+        route = ownerEndpoints.submitPersonalImageEndpoint();
+      } else {
+        route = ownerEndpoints.submitImageEndpoint();
+      }
+      //const route = ownerEndpoints.submitImageEndpoint();
+      const response = await fetch(route, {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -61,8 +72,6 @@ function SubmitImageData({
         console.log("Error al guardar los datos en firebase");
         return;
       }
-      console.log("result", result.msg);
-      console.log("result", result.status);
       setMessage({ msg: `${result.msg}`, status: result.status });
       setFormData({
         url: "",

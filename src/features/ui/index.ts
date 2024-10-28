@@ -10,6 +10,9 @@ export { default as MdiLogout } from "./icons/material-design-icons/MdiLogout";
 
 //Material Symbols
 export { default as MaterialSymbolsCloseRounded } from "./icons/material-symbols/MaterialSymbolsCloseRounded";
+export { default as MaterialSymbolsDownload } from "./icons/material-symbols/MaterialSymbolsDownload";
+export { default as MaterialSymbolsShare } from "./icons/material-symbols/MaterialSymbolsShare";
+export { default as MdiKeyboardReturn } from "./icons/material-symbols/MdiKeyboardReturn";
 
 //Mage Icons
 export { default as MageX } from "./icons/MageIcons/MageX";

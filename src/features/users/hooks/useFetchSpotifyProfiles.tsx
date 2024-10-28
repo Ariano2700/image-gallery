@@ -1,4 +1,5 @@
 "use client";
+import { spotifyEndpoints } from "@/endpointsRouter";
 import useProfilesStore from "@/store/spotifyStore/profile.store";
 import { useEffect } from "react";
 
@@ -14,7 +15,8 @@ export default function useFetchSpotifyProfiles() {
   const profileFatima = useProfilesStore((state) => state.profileFatima);
 
   const fetchProfile = async (userId: string) => {
-    const response = await fetch(`/api/spotify/get?userId=${userId}`, {
+    const route = spotifyEndpoints.getSpotifyUserEndpoint(userId);
+    const response = await fetch(route, {
       method: "GET",
     });
     if (!response.ok) {
@@ -27,7 +29,6 @@ export default function useFetchSpotifyProfiles() {
     const fetchProfiles = async () => {
       try {
         const arianoP = await fetchProfile(ID_ARIANO);
-        console.log("ArianoP", arianoP);
         const fatimaP = await fetchProfile(ID_FATIMA);
         setProfileAriano(arianoP);
         setProfileFaima(fatimaP);
@@ -36,6 +37,6 @@ export default function useFetchSpotifyProfiles() {
       }
     };
     fetchProfiles();
-  },[]);
+  }, []);
   return { profileAriano, profileFatima };
 }

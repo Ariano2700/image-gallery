@@ -11,6 +11,12 @@ export async function POST() {
     path: "/",
     expires: new Date(0), // Fecha en el pasado para eliminarla
   });
+  cookie.set({
+    name: "uid",
+    value: "",
+    path: "/",
+    expires: new Date(0), // Fecha en el pasado para eliminarla
+  });
 
   // Retornar la respuesta
   return NextResponse.json({ message: "Logout successful" }, { status: 200 });

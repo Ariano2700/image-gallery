@@ -4,14 +4,16 @@ import uploadCardStyle from "../css/uploadCardStyle.module.css";
 import { CldUploadWidget } from "next-cloudinary";
 import { ExtendedCloudinaryUploadWidgetResults } from "@/business/ownerUser/interfaces/cldUploadResults";
 import SubmitImageData from "./SubmitImageData";
+import { fetchDataOfI } from "@/features/shared/hooks/useInfiniteScrollObserver";
 
-function UploadCard() {
+function UploadCard({ fetchDataOf }: fetchDataOfI) {
   const [resultData, setResultData] =
     useState<ExtendedCloudinaryUploadWidgetResults | null>(null);
 
   return (
     <section className="flex flex-col gap-10 items-center justify-center">
       <SubmitImageData
+        fetchDataOf={{ fetchDataOf }}
         resultData={resultData}
         resetResultData={() => setResultData(null)}
       />
@@ -33,7 +35,6 @@ function UploadCard() {
             // Verifica que las propiedades clave existan antes de establecer el estado
             if (parsedResult && parsedResult.info && parsedResult.info.url) {
               setResultData(parsedResult);
-              console.log("INFO", parsedResult.info);
             } else {
               console.error(
                 "El resultado no tiene la estructura esperada",

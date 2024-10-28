@@ -14,6 +14,7 @@ import {
 } from "firebase/auth";
 import { authInit as authFirebase } from "@/service/firebase/config";
 import { FirebaseError } from "firebase/app";
+import authEndpoints from "@/endpointsRouter/routes/authEndpoints";
 
 export const contextAuth = createContext<SignUpAndLoginFunction | undefined>(
   undefined
@@ -46,9 +47,10 @@ function ProviderFirebase({ children }: AuthProviderProps) {
       type userFirebaseType = Partial<User>;
       const userFirebase: userFirebaseType = {
         email: result.user.email,
+        uid: result.user.uid,
       };
-
-      const response = await fetch("/api/auth/signIn/post", {
+      const route = authEndpoints.authSignInEndpoint();
+      const response = await fetch(route, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -74,8 +76,9 @@ function ProviderFirebase({ children }: AuthProviderProps) {
   };
 
   const logOut = async () => {
+    const route = authEndpoints.logOutEndpoint();
     signOut(authFirebase);
-    await fetch("/api/auth/logout/post", { method: "POST" });
+    await fetch(route, { method: "POST" });
     window.location.reload();
   };
 

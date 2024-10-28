@@ -1,14 +1,15 @@
 /* heart beat */
 .heartbeatloader {
   position: absolute;
-  width: 10vmin;
-  height: 10vmin;
+  width: 100px;
+  height: 100px;
   z-index: -2;
   margin: auto;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 40;
 }
 
 .svgdraw {

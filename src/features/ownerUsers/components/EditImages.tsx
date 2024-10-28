@@ -2,7 +2,7 @@
 import { ImagesI } from "@/business/users/interfaces/linkImagesInterface";
 import { FetchingLoader } from "@/features/ui";
 import ImageSkeletor from "@/features/users/components/ImageSkeletor";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ConfirmAlert,
   ErrorAlert,
@@ -11,25 +11,37 @@ import {
   useInfiniteScrollObserver,
 } from "@/features/shared";
 import useImageStore from "@/store/imageStore/imageData.store";
+import { ownerEndpoints } from "@/endpointsRouter";
+import { fetchDataOfI } from "@/features/shared/hooks/useInfiniteScrollObserver";
 
-function EditImages() {
+function EditImages({ fetchDataOf, uid }: fetchDataOfI & { uid: string }) {
   const setSelectedImage = useImageStore((state) => state.setSelectedImage);
   const selectedImage = useImageStore((state) => state.selectedImage);
-
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const lastImageRef = useRef<HTMLImageElement>(null);
-
   const {
     hasMore,
     imagesData,
     isFetchingMore,
     isLoading,
     lastImageRef: imageRef,
-  } = useInfiniteScrollObserver({ lastImageRef, scrollContainerRef });
+  } = useInfiniteScrollObserver({
+    lastImageRef,
+    scrollContainerRef,
+    fetchDataOf: { fetchDataOf },
+    uid,
+  });
 
   const handleEdit = async (image: ImagesI) => {
     try {
-      const response = await fetch(`/api/ownerUsers/patch`, {
+      let route;
+      if (fetchDataOf === "PERSONAL") {
+        route = ownerEndpoints.editPersonalImageEndpoint();
+      } else {
+        route = ownerEndpoints.editImageEndpoint();
+      }
+      //const route = ownerEndpoints.editImageEndpoint();
+      const response = await fetch(route, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -55,7 +67,14 @@ function EditImages() {
     ConfirmAlert(async () => {
       try {
         // Aquí llamas a tu método para eliminar la imagen desde Firestore
-        const response = await fetch(`/api/ownerUsers/delete/${imageId}`, {
+        let route;
+        if (fetchDataOf === "PERSONAL") {
+          route = ownerEndpoints.deletePersonalImageEndpoint(imageId);
+        } else {
+          route = ownerEndpoints.deleteImageEndpoint(imageId);
+        }
+        //const route = ownerEndpoints.deleteImageEndpoint(imageId);
+        const response = await fetch(route, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -79,7 +98,7 @@ function EditImages() {
 
   return (
     <div className="py-5 px-16 max-md:px-12 max-sm:px-8 w-full max-sm:py-16">
-      <div className={`grid place-items-center grid-cols-2 md:grid-cols-4`}>
+      <div className={`grid place-items-center gap-2 grid-cols-2 md:grid-cols-4`}>
         {isLoading && imagesData.length === 0
           ? [1, 2, 3, 4].map((_, index) => (
               <div key={index} className="flex  gap-6 w-full">

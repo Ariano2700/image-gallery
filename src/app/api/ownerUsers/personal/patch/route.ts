@@ -1,4 +1,4 @@
-import { updateImageData } from "@/business/ownerUser/methods/firebase/updateImageData"; // Método para actualizar
+import { updatePersonalImageData } from "@/business/ownerUser/methods/firebase/personalImages/updatePersonalImageData";
 import { jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
@@ -11,10 +11,13 @@ export async function PATCH(req: Request) {
   const cookie = cookies();
 
   const token = cookie.get("auth-token")?.value;
+  const uid = cookie.get("uid")?.value;
   if (!token) {
     return NextResponse.json({ msg: "Token no encontrado" }, { status: 401 });
   }
-
+  if (!uid) {
+    return NextResponse.json({ msg: "UID no encontrado" }, { status: 401 });
+  }
   try {
     // Verificar el token JWT para obtener el 'id' del documento (la imagen que se quiere actualizar)
     const { payload } = await jwtVerify(token, secret);
@@ -24,12 +27,16 @@ export async function PATCH(req: Request) {
         { status: 400 }
       );
     }
-    const response = await updateImageData(token, {
-      id,
-      title,
-      description,
-      date,
-    });
+    const response = await updatePersonalImageData(
+      token,
+      {
+        id,
+        title,
+        description,
+        date,
+      },
+      uid
+    );
 
     if (!response.success) {
       return NextResponse.json(
@@ -39,7 +46,7 @@ export async function PATCH(req: Request) {
     }
 
     return NextResponse.json(
-      { msg: "Imagen actualizada correctamente", status: 200 },
+      { msg: "Imagen personal actualizada correctamente", status: 200 },
       { status: 200 }
     );
   } catch (error) {

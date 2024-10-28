@@ -1,7 +1,7 @@
-import { deleteImage } from "@/business/ownerUser/methods/firebase/deleteImage";
 import { NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 import { cookies } from "next/headers";
+import { deletePersonalImage } from "@/business/ownerUser/methods/firebase/personalImages/deletePersonalImage";
 
 export async function DELETE(
   req: Request,
@@ -11,8 +11,12 @@ export async function DELETE(
 
   const cookie = cookies();
   const token = cookie.get("auth-token")?.value;
+  const uid = cookie.get("uid")?.value;
   if (!token) {
     return NextResponse.json({ msg: "Token no encontrado" }, { status: 401 });
+  }
+  if (!uid) {
+    return NextResponse.json({ msg: "UID no encontrado" }, { status: 401 });
   }
 
   try {
@@ -24,16 +28,16 @@ export async function DELETE(
     }
 
     // Aquí llamas a la función para eliminar la imagen
-    const response = await deleteImage(token, id);
+    const response = await deletePersonalImage(token, id, uid);
     if (!response) {
       return NextResponse.json(
-        { msg: "Error al eliminar la imagen" },
+        { msg: "Error al eliminar la imagen personal" },
         { status: 500 }
       );
     }
 
     return NextResponse.json(
-      { msg: "Imagen eliminada correctamente" },
+      { msg: "Imagen personal eliminada correctamente" },
       { status: 200 }
     );
   } catch (error) {

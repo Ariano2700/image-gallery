@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   const body = await req.json();
 
   // Desestructuración del body
-  const { email } = body;
+  const { email, uid } = body;
 
   const cookie = cookies();
 
@@ -32,10 +32,18 @@ export async function POST(req: Request) {
       maxAge: 1000 * 60 * 60 * 24 * 30, // 30 días
     });
 
+    cookie.set({
+      name: "uid",
+      value: uid,
+      path: "/",
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 30,
+    });
     // Retornar la respuesta con la información del usuario
     return NextResponse.json(
       {
         email,
+        msg: "access successfully",
       },
       { status: 200 }
     );

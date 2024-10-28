@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import useFetchImages from "./useFetchImages";
+import { fetchDataOfI } from "./useInfiniteScrollObserver";
 
 interface useInfiniteScrollI {
   scrollContainerRef: React.RefObject<HTMLDivElement>;
@@ -8,9 +9,11 @@ interface useInfiniteScrollI {
 
 export default function useInfiniteScroll({
   scrollContainerRef,
-}: useInfiniteScrollI) {
+  fetchDataOf,
+  uid
+}: useInfiniteScrollI & { fetchDataOf: fetchDataOfI } & {uid:string}) {
   const { fetchImages, isFetchingMore, isLoading, imagesData, hasMore } =
-    useFetchImages();
+    useFetchImages(fetchDataOf, uid);
   const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {

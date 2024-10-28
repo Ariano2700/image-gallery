@@ -2,16 +2,21 @@
 import { useEffect } from "react";
 import useInfiniteScroll from "./useInfiniteScroll";
 
-type InfiniteScrollObserverT = {
+export type InfiniteScrollObserverT = {
   scrollContainerRef: React.RefObject<HTMLDivElement>;
   lastImageRef: React.RefObject<HTMLImageElement>;
+};
+export type fetchDataOfI = {
+  fetchDataOf: "ARIANO" | "FATIMA" | "ALL" | "PERSONAL";
 };
 export default function useInfiniteScrollObserver({
   lastImageRef,
   scrollContainerRef,
-}: InfiniteScrollObserverT) {
+  fetchDataOf,
+  uid,
+}: InfiniteScrollObserverT & { fetchDataOf: fetchDataOfI } & { uid: string }) {
   const { isFetchingMore, isLoading, imagesData, fetchImages, hasMore } =
-    useInfiniteScroll({ scrollContainerRef });
+    useInfiniteScroll({ scrollContainerRef, fetchDataOf, uid });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -22,9 +27,6 @@ export default function useInfiniteScrollObserver({
           !isFetchingMore &&
           !isLoading
         ) {
-          console.log(
-            "El último elemento es visible, cargando más imágenes..."
-          );
           fetchImages();
         }
       },

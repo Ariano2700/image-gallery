@@ -1,3 +1,4 @@
+import { spotifyEndpoints } from "@/endpointsRouter";
 import { GetUserProfileProps } from "../../interfaces/spotifyTypes";
 
 export default async function getUserProfile({
@@ -5,7 +6,8 @@ export default async function getUserProfile({
   token,
 }: GetUserProfileProps) {
   try {
-    const response = await fetch(`https://api.spotify.com/v1/users/${userId}`, {
+    const route = spotifyEndpoints.getSpotifyUserProfileEndpoint(userId);
+    const response = await fetch(route, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",

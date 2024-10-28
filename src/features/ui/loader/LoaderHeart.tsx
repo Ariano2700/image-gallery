@@ -1,7 +1,7 @@
 import LoaderCss from "../css/Loader.module.css";
 const LoaderHeart = () => {
   return (
-    <section className="flex items-center justify-center h-screen w-72">
+    <section className="flex">
       <div className={`${LoaderCss.heartbeatloader}`}>
         <svg
           className={`${LoaderCss.svgdraw}`}
